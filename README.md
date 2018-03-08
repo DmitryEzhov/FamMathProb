@@ -12,4 +12,4 @@ Links
 `Mosel <http://subscribe.fico.com/xpress-optimization-community-license>`_
 `LINGO <https://www.lindo.com/index.php/products/lingo-and-optimization-modeling>`_
 
-`Models by hakank <https://github.com/hakank/hakank>`_
+[Models by hakank](https://github.com/hakank/hakank)
