@@ -1,4 +1,4 @@
-## Repository
+## Problems
 PDMS [Pandiagonal Magic Squares of Prime Numbers](http://azspcs.com/Contest/PandiagonalMagicSquares)
 
 
