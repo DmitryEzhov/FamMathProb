@@ -1,8 +1,8 @@
 ## Problems
-DLC [Delacorte Numbers](http://azspcs.com/Contest/DelacorteNumbers)
-PA [Polygonal Areas](http://azspcs.com/Contest/PolygonalAreas)
-PDMS [Pandiagonal Magic Squares of Prime Numbers](http://azspcs.com/Contest/PandiagonalMagicSquares)
-PRS [Primorial Soup](http://azspcs.com/Contest/PrimorialSoup)
+* DLC [Delacorte Numbers](http://azspcs.com/Contest/DelacorteNumbers)
+* PA [Polygonal Areas](http://azspcs.com/Contest/PolygonalAreas)
+* PDMS [Pandiagonal Magic Squares of Prime Numbers](http://azspcs.com/Contest/PandiagonalMagicSquares)
+* PRS [Primorial Soup](http://azspcs.com/Contest/PrimorialSoup)
 
 
 ## Files
