@@ -1,0 +1,65 @@
+using CP;
+
+execute {cp.param.Workers = 3; cp.param.logperiod = 100000;}
+
+int n = 11; range N = 1..n;
+
+dvar int X[N] in N; dvar int Y[N] in N;
+
+dexpr int A[i in N] = Y[i]-Y[i%n+1];
+
+dexpr int B[i in N] = X[i%n+1]-X[i];
+
+dexpr int C[i in N] = X[i]*Y[i%n+1]-X[i%n+1]*Y[i];
+
+dexpr int D[i in N, j in N] = A[i]*B[j] - A[j]*B[i];
+
+//dexpr int N1[i in N, j in N] = B[i]*C[j] - B[j]*C[i];
+
+//dexpr int N2[i in N, j in N] = A[j]*C[i] - A[i]*C[j];
+
+dexpr float N1[i in N, j in N] = (B[i]*C[j] - B[j]*C[i])/D[i,j];
+
+dexpr float N2[i in N, j in N] = (A[j]*C[i] - A[i]*C[j])/D[i,j];
+
+
+dexpr int minx1[i in N, j in N] = (X[i] < X[i+1]) ? X[i] : X[i+1];
+dexpr int maxx1[i in N, j in N] = (X[i] > X[i+1]) ? X[i] : X[i+1];
+
+dexpr int miny1[i in N, j in N] = (Y[i] < Y[i+1]) ? Y[i] : Y[i+1];
+dexpr int maxy1[i in N, j in N] = (Y[i] > Y[i+1]) ? Y[i] : Y[i+1];
+
+dexpr int minx2[i in N, j in N] = (X[j] < X[j%n+1]) ? X[j] : X[j%n+1];
+dexpr int maxx2[i in N, j in N] = (X[j] > X[j%n+1]) ? X[j] : X[j%n+1];
+
+dexpr int miny2[i in N, j in N] = (Y[j] < Y[j%n+1]) ? Y[j] : Y[j%n+1];
+dexpr int maxy2[i in N, j in N] = (Y[j] > Y[j%n+1]) ? Y[j] : Y[j%n+1];
+
+
+dexpr int S = sum(i in N) (C[i]);
+
+
+maximize abs(S);
+
+
+constraints
+
+{
+  forall(i in N, j in N : i < j) ((X[i] != X[j]) && (Y[i] != Y[j]));
+
+  forall(i in N, j in N : i < j) (D[i,j] != 0);
+
+  forall(i in N, j in N : 1 < (j-i) < (n-1))
+  (
+   ((N1[i,j] < minx1[i,j] || N1[i,j] > maxx1[i,j]) || (N2[i,j] < miny1[i,j] || N2[i,j] > maxy1[i,j]))
+   &&
+   ((N1[i,j] < minx2[i,j] || N1[i,j] > maxx2[i,j]) || (N2[i,j] < miny2[i,j] || N2[i,j] > maxy2[i,j]))
+  );
+
+//  abs(S) == 42;
+}
+
+execute
+{
+  writeln(S); writeln(X); writeln(Y); writeln();
+}
